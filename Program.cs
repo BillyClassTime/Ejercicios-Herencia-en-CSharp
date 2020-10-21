@@ -6,8 +6,8 @@ namespace Heritage05
     {
         static void Main(string[] args)
         {
-            new Program().UsingBeverageHeritage();
-            //new Program().usingShapesHeritage();
+            //new Program().UsingBeverageHeritage();
+            new Program().usingShapesHeritage();
             //new Program().usingPublicationHeritage();
             //new Program().usingAutomobileHeritage();
             //new Program().usingNewAndOverride();
@@ -18,39 +18,81 @@ namespace Heritage05
             Coffee coffee1 = new Coffee();
             // Use base class members.
             coffee1.Name = "Fourth Espresso";
+            coffee1.IncludeMilk = true;
             coffee1.IsFairTrade = true;
             int servingTemp = coffee1.GetServingTemperature();
+            WriteLine($"Temperatura desde la clase base:{servingTemp}");
             // Use derived class members.
             coffee1.Bean = "Arabica";
             coffee1.Roast = "Dark";
             coffee1.CountryOfOrigin = "Colombia";
 
             servingTemp = coffee.GetServingTemperature();
-            WriteLine($"Temperatura desde la clase base:{servingTemp}");
             servingTemp = coffee1.OtherServingTemperatura();
-            WriteLine($"Temperatura desde la clase deivada:{servingTemp}");
+            WriteLine($"Temperatura desde la clase derivada:{servingTemp}");
+
+            Juice orange = new Juice();
+            orange.Name = "Valencia";
+            //orange.servingTemperature = 20;
+
+            Expresso cafeExpreso = new Expresso();
+            cafeExpreso.Name = "Fiveth Espresso";
+            cafeExpreso.IncludeMilk = true;
+            cafeExpreso.IsFairTrade = true;
+            servingTemp = cafeExpreso.GetServingTemperature();
+            WriteLine($"Temperatura en Cafe Expreso desde la clase base:{servingTemp}");
+
+            IceJuice Naranja = new IceJuice();
+            Naranja.Name = "Golden Valencian";
+            Naranja.IsFairTrade = true;
+            servingTemp = Naranja.GetServingTemperature();
+            WriteLine($"Temperatura en Juice:{servingTemp}");
         }
 
         public void usingShapesHeritage()
         {
             Shape[] shapes = { new Rectangle(10, 12), new Square(5),
-                        new Circle(3) };
+                        new Circle(3), new PentagonoEspecializado(3,4) };
             foreach (var shape in shapes)
             {
-                Console.WriteLine($"{shape}: area, {Shape.GetArea(shape)}; " +
+                WriteLine($"{shape}: area, {Shape.GetArea(shape)}; " +
                                   $"perimeter, {Shape.GetPerimeter(shape)}");
                 var rect = shape as Rectangle;
                 if (rect != null)
                 {
-                    Console.WriteLine($"   Is Square: {rect.IsSquare()}, Diagonal: {rect.Diagonal}");
+                    WriteLine($"   Is Square: {rect.IsSquare()}, Diagonal: {rect.Diagonal}");
+                    WriteLine($"area R:{Rectangle.GetArea(rect)}");
                     continue;
                 }
                 var sq = shape as Square;
                 if (sq != null)
                 {
-                    Console.WriteLine($"   Diagonal: {sq.Diagonal}");
+                    WriteLine($"   Diagonal: {sq.Diagonal}");
+                    WriteLine($"area S:{Square.GetArea(sq)}");
                     continue;
                 }
+                var pe = shape as PentagonoEspecializado;
+                if (pe != null)
+                {
+                    WriteLine($"   Perimeter(getPerimeter): {PentagonoEspecializado.GetPerimeter(pe)}");
+                    WriteLine($"   Perimeter(pe): {pe.Perimeter}");
+                    WriteLine($"area PE:{PentagonoEspecializado.GetArea(pe)}");
+                    //continue;
+                }
+
+                var p = shape as Pentagono;
+                if (p != null)
+                {
+                    WriteLine($"   Perimeter(getPerimeter): {Pentagono.GetPerimeter(p)}");
+                    WriteLine($"   Perimeter(p): {p.Perimeter}");
+
+                    WriteLine($"area P:{Pentagono.GetArea(p)}");
+                    continue;
+                }
+
+
+                //Shape figura = new Shape(); No puedo instanciar clases ventajas
+
             }
         }
 
@@ -76,7 +118,7 @@ namespace Heritage05
         public void usingAutomobileHeritage()
         {
             var packard = new Automobile("Packard", "Custom Eight", 1948);
-            Console.WriteLine(packard);
+            WriteLine(packard);
         }
 
         public void usingNewAndOverride()

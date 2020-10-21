@@ -6,21 +6,24 @@ namespace Heritage05
         public string Roast { get; set; }
         public string CountryOfOrigin { get; set; }
 
-        private int servingTempWithMilk;
-        private int servingTempWithoutMilk;
+        //private int servingTempWithMilk;
+        //private int servingTempWithoutMilk;
 
+        public bool IncludeMilk {get; set;}
+        public int ServingTempWithMilk {get; set;}
+        public int ServingTempWithoutMilk {get;set;} 
         //Overriding a Virtual Method by Using the override Keyword 
-        /*public override int GetServingTemperature()
+        public override int GetServingTemperature()
         {
-            if (includesMilk)
-                return servingTempWithMilk;
+            if (IncludeMilk)
+                return ServingTempWithMilk = base.GetServingTemperature() + 10;
             else
-                return servingTempWithoutMilk;
+                return ServingTempWithoutMilk = base.GetServingTemperature() + 15;
             //return base.GetServingTemperature();
-        }*/
+        }
 
-        private bool includesMilk;
-        public new int GetServingTemperature()
+        //private bool includeMilk;
+        /*public new int GetServingTemperature()
         {
             if (base.servingTemperature > 0)
             {
@@ -30,7 +33,7 @@ namespace Heritage05
                 return servingTempWithMilk;
             else
                 return servingTempWithoutMilk;
-        }
+        }*/
         /*sealed public override int GetServingTemperature()
         {
             // Derived classes cannot override this method.
@@ -44,6 +47,37 @@ namespace Heritage05
         /*{
 
         }*/
+    }
+
+    public class Juice : Beverage
+    {
+        private string RecolectarSemillas()
+        {
+            servingTemperature = 23;
+            return "";
+        }
+
+        public new int GetServingTemperature()
+        {
+            return servingTemperature-13;
+        }
+
+        
+
+    }
+
+    public class IceJuice : Juice 
+    {
+        private string SirviendoHelados()
+        {
+            servingTemperature = 34;
+            return "";
+        }
+    }
+
+    public class Expresso : Coffee
+    {
+
     }
 
 }

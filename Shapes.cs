@@ -38,6 +38,8 @@ namespace Heritage05
         public bool IsSquare() => Length == Width;
 
         public double Diagonal => Math.Round(Math.Sqrt(Math.Pow(Length, 2) + Math.Pow(Width, 2)), 2);
+
+        public new static double GetArea(Shape shape) =>shape.Area+1;
     }
 
     public class Circle : Shape
@@ -58,4 +60,30 @@ namespace Heritage05
 
         public double Diameter => Radius * 2;
     }
+
+    public class Pentagono : Shape
+    {
+        public Pentagono(double apotema, double side)
+        {
+            Apotema = apotema;
+            Side = side;
+        }
+        public double Apotema {get; set;}
+        public override double Area => (Perimeter * Apotema)/2;
+
+        public override double Perimeter => Side * 5;
+
+        public double Side {get;set;}
+
+    }
+
+    public class PentagonoEspecializado : Pentagono
+    {
+        public PentagonoEspecializado(double apotema, double side)
+        : base(apotema, side)
+        {
+        }
+        public new double Perimeter => Side * 5.5;
+    }
+
 }
