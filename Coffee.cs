@@ -2,6 +2,7 @@ namespace Heritage05
 {
     public class Coffee : Beverage
     {
+        public Coffee() {}
         public string Bean { get; set; }
         public string Roast { get; set; }
         public string CountryOfOrigin { get; set; }
@@ -9,9 +10,9 @@ namespace Heritage05
         //private int servingTempWithMilk;
         //private int servingTempWithoutMilk;
 
-        public bool IncludeMilk {get; set;}
-        public int ServingTempWithMilk {get; set;}
-        public int ServingTempWithoutMilk {get;set;} 
+        public bool IncludeMilk { get; set; }
+        public int ServingTempWithMilk { get; set; }
+        public int ServingTempWithoutMilk { get; set; }
         //Overriding a Virtual Method by Using the override Keyword 
         public override int GetServingTemperature()
         {
@@ -47,10 +48,23 @@ namespace Heritage05
         /*{
 
         }*/
+        public Coffee(string name, bool isFairTrade, int servingTemp, string bean, string roast)
+                    : base(name, isFairTrade, servingTemp)
+        {
+            // This calls the Beverage(string, bool, int) constructor.
+            // You can include additional code here:
+            Bean = bean;
+            Roast = roast;
+        }
     }
 
     public class Juice : Beverage
     {
+        public Juice() {}
+        public Juice(string name)
+        :base(name,default,default)
+        {
+        }
         private string RecolectarSemillas()
         {
             servingTemperature = 23;
@@ -59,15 +73,18 @@ namespace Heritage05
 
         public new int GetServingTemperature()
         {
-            return servingTemperature-13;
+            return servingTemperature - 13;
         }
 
-        
+
 
     }
 
-    public class IceJuice : Juice 
+    public class IceJuice : Juice
     {
+        public IceJuice(){}
+        public IceJuice(string name)
+        :base(name){}
         private string SirviendoHelados()
         {
             servingTemperature = 34;
@@ -77,6 +94,8 @@ namespace Heritage05
 
     public class Expresso : Coffee
     {
+        public Expresso(){}
+        Expresso(string name):base(name,default,default,default,default){}
 
     }
 

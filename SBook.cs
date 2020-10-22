@@ -8,7 +8,8 @@ namespace Heritage05
                this(title, String.Empty, author, publisher)
         { }
 
-        public Book(string title, string isbn, string author, string publisher) : base(title, publisher, PublicationType.Book)
+        public Book(string title, string isbn, string author, string publisher) : 
+              base(title, publisher, PublicationType.Book)
         {
             // isbn argument must be a 10- or 13-character numeric string without "-" characters.
             // We could also determine whether the ISBN is valid by comparing its checksum digit

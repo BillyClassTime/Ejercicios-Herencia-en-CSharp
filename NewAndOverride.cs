@@ -2,32 +2,33 @@ using System;
 using static System.Console;
 namespace Heritage05
 {
-    class BaseClass
+    class Animal
     {
         //public void Method1()
-        public virtual void Method1()
+        public virtual void Respirar()
         {
-            WriteLine("Base - Method1");
+            WriteLine("Animal - Respirar");
         }
 
         //(2)
         //public void Method2()
-        public virtual void Method2()
+        public virtual void Correr()
         {
-            Console.WriteLine("Base - Method2");
+            Console.WriteLine("Animal - Correr");
         }
     }
 
-    class DerivedClass : BaseClass
+    class Hombre : Animal
     {
         //public void Method2()
-        public new void Method2()
+        public new void Correr()
         {
-            WriteLine("Derived - Method2");
+            WriteLine("Hombre - Correr");
         }
-        public override void Method1()
+        public override void Respirar()
         {
-            WriteLine("Derived - Method1");
+            //base.Method2();
+            WriteLine("Hombre - Respirar");
         }
     }
 }

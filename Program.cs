@@ -6,11 +6,11 @@ namespace Heritage05
     {
         static void Main(string[] args)
         {
-            //new Program().UsingBeverageHeritage();
-            new Program().usingShapesHeritage();
-            //new Program().usingPublicationHeritage();
-            //new Program().usingAutomobileHeritage();
             //new Program().usingNewAndOverride();
+            //new Program().usingAutomobileHeritage();
+            new Program().usingPublicationHeritage();
+            //new Program().usingShapesHeritage();
+            //new Program().UsingBeverageHeritage();
         }
         public void UsingBeverageHeritage()
         {
@@ -74,6 +74,7 @@ namespace Heritage05
                 var pe = shape as PentagonoEspecializado;
                 if (pe != null)
                 {
+                    WriteLine(new String('=',80));;
                     WriteLine($"   Perimeter(getPerimeter): {PentagonoEspecializado.GetPerimeter(pe)}");
                     WriteLine($"   Perimeter(pe): {pe.Perimeter}");
                     WriteLine($"area PE:{PentagonoEspecializado.GetArea(pe)}");
@@ -85,7 +86,6 @@ namespace Heritage05
                 {
                     WriteLine($"   Perimeter(getPerimeter): {Pentagono.GetPerimeter(p)}");
                     WriteLine($"   Perimeter(p): {p.Perimeter}");
-
                     WriteLine($"area P:{Pentagono.GetArea(p)}");
                     continue;
                 }
@@ -123,16 +123,21 @@ namespace Heritage05
 
         public void usingNewAndOverride()
         {
-            BaseClass bc = new BaseClass();
-            DerivedClass dc = new DerivedClass();
-            BaseClass bcdc = new DerivedClass();
+            Animal bc = new Animal();
+            Hombre dc = new Hombre();
 
-            bc.Method1();
-            bc.Method2();
-            dc.Method1();
-            dc.Method2();
-            bcdc.Method1();
-            bcdc.Method2();
+            Animal bcdc = dc; //new Hombre();
+
+            bc.Respirar();
+            bc.Correr();
+            dc.Respirar();
+            dc.Correr();
+            bcdc.Respirar();
+            bcdc.Correr();
+            
+            //((DerivedClass) bcdc).Correr(); //Accede al metodo porque se ha hecho la conversion
+            //((DerivedClass) bc).Correr(); //Error en tiempo de ejecución de conversion
+
         }
     }
 }

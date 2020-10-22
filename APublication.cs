@@ -3,7 +3,7 @@ using static System.Console;
 namespace Heritage05
 {
     public enum PublicationType { Misc, Book, Magazine, Article };
-
+    //https://docs.microsoft.com/es-es/dotnet/csharp/tutorials/inheritance#designing-the-base-class-and-derived-classes
     public abstract class Publication
     {
         private bool published = false;
@@ -35,8 +35,9 @@ namespace Heritage05
 
         public int Pages
         {
-            get { return totalPages; }
-            set
+            //get { return totalPages; }
+            get => totalPages;
+            set 
             {
                 if (value <= 0)
                     throw new ArgumentOutOfRangeException("The number of pages cannot be zero or negative.");

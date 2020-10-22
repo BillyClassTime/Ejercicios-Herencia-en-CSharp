@@ -2,6 +2,7 @@ using System;
 using static System.Console;
 namespace Heritage05
 {
+    //https://docs.microsoft.com/es-es/dotnet/csharp/tutorials/inheritance#inheritance-and-an-is-a-relationship
     public class Automobile
     {
         public Automobile(string make, string model, int year)
