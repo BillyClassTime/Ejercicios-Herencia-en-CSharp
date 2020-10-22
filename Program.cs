@@ -8,7 +8,7 @@ namespace Heritage05
         {
             //new Program().usingNewAndOverride();
             //new Program().usingAutomobileHeritage();
-            new Program().usingPublicationHeritage();
+            //new Program().usingPublicationHeritage();
             //new Program().usingShapesHeritage();
             //new Program().UsingBeverageHeritage();
         }
